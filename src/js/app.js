@@ -102,6 +102,17 @@
       });
     });
 
+    // 移动端标签切换
+    document.querySelectorAll('.mobile-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const pane = this.getAttribute('data-pane');
+        document.querySelectorAll('.mobile-tab').forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        document.querySelector('.editor-pane').classList.toggle('active', pane === 'editor');
+        document.querySelector('.preview-pane').classList.toggle('active', pane === 'preview');
+      });
+    });
+
     // 快捷键
     editor.addEventListener('keydown', function (e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
